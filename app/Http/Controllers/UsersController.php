@@ -9,6 +9,12 @@ use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth',['except' => 'show']);
+    }
+
     //显示用户页面
     public function show(User $user)
     {
@@ -19,6 +25,7 @@ class UsersController extends Controller
     //编辑用户资料
     public function  edit(User $user)
     {
+        $this->authorize('update',$user);
         return view('users.edit',compact('user'));
     }
 
@@ -26,6 +33,7 @@ class UsersController extends Controller
     //更新用户资料
     public function update(UserRequest $request,ImageUploadHandler $uploader,User $user)
     {
+        $this->authorize('update',$user);
         //dd($request->avatar);
 
         $data = $request->all();
