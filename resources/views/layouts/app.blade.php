@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>
+    <meta name="description" content="@yield('description','Laravel 爱好者社区')" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -25,6 +26,8 @@
 
         {{--引入提示信息--}}
         @include('layouts._message')
+
+
         @yield('content')
 
     </div>
