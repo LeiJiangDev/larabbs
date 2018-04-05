@@ -34,4 +34,11 @@ class ReplyObserver
 
     }
 
+    public function deleted(Reply $reply)
+    {
+        //帖子数-1
+        $reply->topic->decrement('reply_count',1);
+
+    }
+
 }
