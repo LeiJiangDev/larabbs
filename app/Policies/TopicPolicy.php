@@ -7,14 +7,17 @@ use App\Models\Topic;
 
 class TopicPolicy extends Policy
 {
+
+    //只允许作者修改
     public function update(User $user, Topic $topic)
     {
-        return $topic->user_id == $user->id;
+        return $user -> isAuthorOf($topic);
 
     }
 
+    //只允许作者删除
     public function destroy(User $user, Topic $topic)
     {
-        return true;
+        return $user -> isAuthorOf($topic);
     }
 }

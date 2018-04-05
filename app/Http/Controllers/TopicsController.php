@@ -69,6 +69,7 @@ class TopicsController extends Controller
 		return redirect()->route('topics.show', $topic->id)->with('message', 'Updated successfully.');
 	}
 
+	//删除话题
 	public function destroy(Topic $topic)
 	{
 		$this->authorize('destroy', $topic);
