@@ -50,5 +50,12 @@ class UsersTableSeeder extends Seeder
         $user->avatar = 'https://lccdn.phphub.org/uploads/avatars/21088_1519183385.jpg?imageView2/1/w/200/h/200';
         $user->save();
 
+
+        //初始化用户角色，将1号用户指派为站长
+        $user ->assignRole('Founder');
+
+        $user = User::find(2);
+        $user->assignRole('Maintainer');
+
     }
 }
