@@ -36,6 +36,11 @@
     @include('layouts._footer')
 </div>
 
+
+@if (config('app.debug'))
+    @include('sudosu::user-selector')
+@endif
+
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 
